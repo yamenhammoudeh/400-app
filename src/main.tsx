@@ -8,8 +8,8 @@ createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<App />} />
-        <Route path="/:gameId" element={<App />} />
+        {/* One route so App stays mounted when the game ID is added to the URL */}
+        <Route path="/:gameId?" element={<App />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>

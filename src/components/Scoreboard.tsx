@@ -1,4 +1,3 @@
-import React from 'react';
 import { Trophy } from 'lucide-react';
 import { Team, Round } from '../types/game';
 import { GameHistoryTable } from './GameHistory/GameHistoryTable';

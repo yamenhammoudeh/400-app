@@ -1,8 +1,6 @@
-import React from 'react';
 import { ThumbsUp, ThumbsDown } from 'lucide-react';
-import { GameHistoryTable } from '../GameHistory/GameHistoryTable';
 import { ResultsHeader } from './ResultsHeader';
-import { Player, Round } from '../../types/game';
+import { Round } from '../../types/game';
 import { useSoundEffects } from '../../hooks/useSoundEffects';
 
 interface ResultsConfirmationProps {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Check, X, Gamepad2 } from 'lucide-react';
 import { BidModal } from './BidModal';
 import { playSound } from '../../utils/sounds';
@@ -11,7 +11,7 @@ interface BidGridProps {
   disabled?: boolean;
 }
 
-export function BidGrid({ playerId, playerName, onBidSelect, selectedBid, disabled }: BidGridProps) {
+export function BidGrid({ playerName, onBidSelect, selectedBid, disabled }: BidGridProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleClick = () => {

@@ -1,4 +1,3 @@
-import React from 'react';
 import { UserCircle2, Check } from 'lucide-react';
 import { BidSlider } from './BidSlider';
 
@@ -11,7 +10,6 @@ interface PlayerBidCardProps {
 }
 
 export function PlayerBidCard({
-  playerId,
   playerName,
   currentBid,
   onBidChange,

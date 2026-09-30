@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import { PlayerSetup } from './components/PlayerSetup';
 import { BidCollectionPhase } from './components/BidCollection/BidCollectionPhase';
 import { ResultsConfirmation } from './components/Results/ResultsConfirmation';
@@ -13,20 +13,32 @@ import { Footer } from './components/Footer/Footer';
 import { useGameState } from './hooks/useGameState';
 import { TEAMS } from './constants/game';
 import { getGameUrl } from './utils/gameId';
+import { Team } from './types/game';
 
 export default function App() {
   const { gameId: urlGameId } = useParams();
+  const navigate = useNavigate();
   const [showQRCode, setShowQRCode] = useState(false);
   
   const {
     gameState,
     initializeGame,
-    resetGame,
+    resetGame: resetGameState,
     handleBidChange,
     handleConfirmBids,
     handleResultSubmit,
     handleConfirmResults,
   } = useGameState(urlGameId);
+
+  const startGame = async (playerNames: string[]) => {
+    const id = await initializeGame(playerNames);
+    navigate(`/${id}`);
+  };
+
+  const resetGame = () => {
+    resetGameState();
+    navigate('/');
+  };
 
   const handleJoinGame = (id: string) => {
     window.location.href = `/${id}`;
@@ -35,7 +47,7 @@ export default function App() {
   if (!gameState) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center p-4 space-y-8">
-        <PlayerSetup onPlayersSubmit={initializeGame} />
+        <PlayerSetup onPlayersSubmit={startGame} />
         <div className="w-full max-w-md">
           <div className="text-center text-white/60 my-4">- OR -</div>
           <JoinGame onJoin={handleJoinGame} />
@@ -45,10 +57,10 @@ export default function App() {
     );
   }
 
-  const teams = TEAMS.map(team => ({
+  const teams: Team[] = TEAMS.map(team => ({
     id: team.id,
     color: team.color,
-    players: team.playerIndices.map(idx => gameState.players[idx]),
+    players: [gameState.players[team.playerIndices[0]], gameState.players[team.playerIndices[1]]],
   }));
 
   if (gameState.isGameOver && gameState.winningTeam) {

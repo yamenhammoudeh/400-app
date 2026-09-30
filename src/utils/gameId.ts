@@ -1,5 +1,3 @@
-import { generateSlug } from 'random-word-slugs';
-
 export function generateGameId(): string {
   // Generate a 4-character random ID using uppercase letters and numbers
   const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';

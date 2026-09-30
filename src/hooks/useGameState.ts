@@ -28,6 +28,7 @@ export function useGameState(urlGameId?: string) {
     };
     setGameState(newGameState);
     await saveGame(newGameState);
+    return gameId;
   }, [saveGame, playClick]);
 
   const resetGame = useCallback(() => {

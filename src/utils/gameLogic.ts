@@ -1,6 +1,6 @@
-import { GameState, Player, Round, GamePhase } from '../types/game';
+import { GameState, Player } from '../types/game';
 
-export function createInitialGameState(playerNames: string[]): GameState {
+export function createInitialGameState(playerNames: string[]): Omit<GameState, 'id'> {
   const players: Player[] = playerNames.map((name, index) => ({
     id: index + 1,
     name,

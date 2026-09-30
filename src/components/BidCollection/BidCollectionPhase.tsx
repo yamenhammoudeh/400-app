@@ -1,4 +1,3 @@
-import React from 'react';
 import { BidGrid } from './BidGrid';
 import { Player } from '../../types/game';
 

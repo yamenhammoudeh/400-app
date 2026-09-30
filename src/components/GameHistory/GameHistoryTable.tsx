@@ -1,4 +1,3 @@
-import React from 'react';
 import { Player, Round } from '../../types/game';
 
 interface GameHistoryTableProps {

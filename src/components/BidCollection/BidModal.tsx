@@ -1,4 +1,3 @@
-import React from 'react';
 import { X } from 'lucide-react';
 import { ALLOWED_BIDS } from '../../constants/game';
 import { playSound } from '../../utils/sounds';
